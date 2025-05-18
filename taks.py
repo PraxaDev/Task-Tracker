@@ -1,5 +1,5 @@
 from os.path import dirname, realpath, isfile
-from json import dump
+from json import dump, load
 
 class ManageJson():
     def __init__(self):
@@ -20,5 +20,13 @@ class ManageJson():
             with open(path_data_file, 'w') as f:
                 dump(data, f, indent=3)
             return True
+        else:
+            return False
+        
+    def read_json(self, file):
+        if isfile(self.path + file):
+            with open(self.path + file) as f:
+                data = load(f)
+            return data
         else:
             return False
